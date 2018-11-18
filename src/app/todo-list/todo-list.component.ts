@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit {
   addTodo(inputRef: HTMLInputElement): void {
     const todo = inputRef.value.trim();
 
-    if(todo.length > 0) {
+    if ( todo.length > 0) {
       console.log(inputRef.value);
       this.todoListService.add(todo);
       inputRef.value = '';
