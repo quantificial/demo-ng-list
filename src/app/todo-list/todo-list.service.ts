@@ -28,4 +28,8 @@ export class TodoListService {
     return this.list;
   }
 
+  remove(index: number): void {
+    this.list.splice(index, 1);
+  }
+
 }

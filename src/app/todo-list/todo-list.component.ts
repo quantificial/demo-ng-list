@@ -30,4 +30,8 @@ export class TodoListComponent implements OnInit {
 
   }
 
+  remove(index: number): void {
+    this.todoListService.remove(index);
+  }
+
 }
