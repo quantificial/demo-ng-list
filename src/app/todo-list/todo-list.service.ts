@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Todo } from './todo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoListService {
 
-  private list: string [] = [];
+  private list: Todo[] = [];
 
   constructor() { }
 
@@ -16,14 +17,14 @@ export class TodoListService {
     console.log('title is:' + title);
 
     if (title.length > 0 || title.trim()) {
-      this.list.push(title);
+      this.list.push(new Todo(title));
 
       console.log(this.list);
     }
 
   }
 
-  getList(): string[] {
+  getList(): Todo[] {
     return this.list;
   }
 
