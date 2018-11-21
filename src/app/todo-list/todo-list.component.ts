@@ -34,4 +34,32 @@ export class TodoListComponent implements OnInit {
     this.todoListService.remove(index);
   }
 
+  edit(todo: Todo): void {
+    todo.editable = true;
+  }
+
+  cancelEditing(todo: Todo): void {
+    todo.editable = false;
+  }
+
+  getRemainingList(): Todo[] {
+    return this.todoListService.getWithCompleted(false);
+  }
+
+  update(todo: Todo, newTitle: string): void {
+
+    const title = newTitle.trim();
+
+    if (title) {
+      todo.setTitle(title);
+      todo.editable = false;
+
+    } else {
+      const index = this.getList().indexOf(todo);
+      if (index !== -1) {
+        this.remove(index);
+      }
+    }
+
+  }
 }
