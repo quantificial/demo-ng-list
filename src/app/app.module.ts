@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    TodoListModule
+    TodoListModule  // it is the core todo list module
   ],
   providers: [],
   bootstrap: [AppComponent]

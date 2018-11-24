@@ -7,6 +7,9 @@ import { Todo } from './todo.model';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
+
+// the todo list web component
+// need to use the todo list serivce to manage the todo list objects
 export class TodoListComponent implements OnInit {
 
   constructor(private todoListService: TodoListService) { }

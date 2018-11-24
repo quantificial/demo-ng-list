@@ -4,13 +4,13 @@ import { Todo } from './todo.model';
 @Injectable({
   providedIn: 'root'
 })
+
+// todo list service to manage the todo objects in memory (the list)
 export class TodoListService {
 
   private list: Todo[] = [];
 
   constructor() { }
-
-
 
   add(title: string): void {
 
@@ -35,7 +35,5 @@ export class TodoListService {
   getWithCompleted(completed: boolean): Todo[] {
     return this.list.filter(todo => todo.done === completed);
   }
-
-
 
 }

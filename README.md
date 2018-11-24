@@ -1,4 +1,10 @@
-# Angular30daysMyTodoList
+
+<h3>build a todo list in 30 days by using angular framework</h3>
+
+
+refer to the tutorial https://ithelp.ithome.com.tw/articles/10206974
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
