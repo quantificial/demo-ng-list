@@ -1,12 +1,13 @@
+
+// to do list model
 export class Todo {
   constructor(title: string) {
     this.title = title || ''; // 為避免傳入的值為 Falsy 值，稍作處理
   }
 
-  private title = '';
-  private completed = false;
-
-  private editMode = false;
+  private title = ''; // title
+  private completed = false; // whether it is completed
+  private editMode = false; // in edit mode or not
 
   get editing(): boolean {
     return this.editMode;

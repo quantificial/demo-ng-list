@@ -1,3 +1,4 @@
+import { TodoStatusType } from './todo-status-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { TodoListService } from './todo-list.service';
 import { Todo } from './todo.model';
@@ -12,13 +13,52 @@ import { Todo } from './todo.model';
 // need to use the todo list serivce to manage the todo list objects
 export class TodoListComponent implements OnInit {
 
+  todoStatusType = TodoStatusType;
+
+  private status = TodoStatusType.All;
+
   constructor(private todoListService: TodoListService) { }
 
   ngOnInit() {
   }
 
+  setStatus(status: number): void {
+    this.status = status;
+  }
+
+  checkStatus(status: number): boolean {
+    return this.status === status;
+  }
+
+  getCompletedList(): Todo[] {
+    return this.todoListService.getWithCompleted(true);
+  }
+
+  getRemainingList(): Todo[] {
+    return this.todoListService.getWithCompleted(false);
+  }
+
   getList(): Todo[] {
-    return this.todoListService.getList();
+
+    let list: Todo[] = [];
+
+    switch (this.status) {
+
+      case TodoStatusType.Active:
+        list = this.getRemainingList();
+        break;
+
+      case TodoStatusType.Completed:
+        list = this.getCompletedList();
+        break;
+
+      default:
+        list = this.todoListService.getList();
+        break;
+
+    }
+
+    return list;
   }
 
   addTodo(inputRef: HTMLInputElement): void {
@@ -45,9 +85,7 @@ export class TodoListComponent implements OnInit {
     todo.editable = false;
   }
 
-  getRemainingList(): Todo[] {
-    return this.todoListService.getWithCompleted(false);
-  }
+
 
   update(todo: Todo, newTitle: string): void {
 
